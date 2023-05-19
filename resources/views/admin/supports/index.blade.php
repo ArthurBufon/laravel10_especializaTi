@@ -1,6 +1,6 @@
 <h1>Listagem dos suportes</h1>
 
-<a href="{{}}"></a>
+<a href="{{ route('supports.create') }}"></a>
 
 <table>
     <thead>
@@ -15,6 +15,7 @@
                 <td>{{ $support->subject }}</td>
                 <td>{{ $support->status }}</td>
                 <td>{{ $support->body }}</td>
+                <td>></td>
             </tr>
         @endforeach
     </tbody>
