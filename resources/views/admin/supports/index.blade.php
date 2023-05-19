@@ -10,12 +10,16 @@
         <th></th>
     </thead>
     <tbody>
+        {{-- listando suportes --}}
         @foreach ($supports as $support)
             <tr>
                 <td>{{ $support->subject }}</td>
                 <td>{{ $support->status }}</td>
                 <td>{{ $support->body }}</td>
-                <td>></td>
+                <td>
+                    {{-- passando parametro id para a rota --}}
+                    <a href="{{route('supports.show', $support->id)}}">ir</a>
+                </td>
             </tr>
         @endforeach
     </tbody>
