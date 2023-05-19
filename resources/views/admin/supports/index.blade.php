@@ -1,6 +1,6 @@
 <h1>Listagem dos suportes</h1>
 
-<a href="{{ route('supports.create') }}"></a>
+<a href="{{ route('supports.create') }}">Criar Dúvida</a>
 
 <table>
     <thead>
@@ -18,7 +18,8 @@
                 <td>{{ $support->body }}</td>
                 <td>
                     {{-- passando parametro id para a rota --}}
-                    <a href="{{route('supports.show', $support->id)}}">ir</a>
+                    <a href="{{ route('supports.show', $support->id) }}">ir</a>
+                    <a href="{{ route('supports.edit', $support->id) }}">editar</a>
                 </td>
             </tr>
         @endforeach
