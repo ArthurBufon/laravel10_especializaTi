@@ -1,31 +1,41 @@
-<h1>Listagem dos suportes</h1>
+@extends('admin.layouts.app')
 
-<a href="{{ route('supports.create') }}">Criar Dúvida</a>
+@section('title', 'Supports')
 
-<table>
-    <thead>
-        <th>assunto</th>
-        <th>status</th>
-        <th>descrição</th>
-        <th></th>
-    </thead>
-    <tbody>
-        {{-- listando suportes --}}
-        @foreach ($supports->items() as $support)
-            <tr>
-                <td>{{ $support->subject }}</td>
-                <td>{{ getStatusSupport($support->status) }}</td>
-                <td>{{ $support->body }}</td>
-                <td>
-                    {{-- passando parametro id para a rota --}}
-                    <a href="{{ route('supports.show', $support->id) }}">ir</a>
-                    <a href="{{ route('supports.edit', $support->id) }}">editar</a>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+@section('header')
+    @include('admin.supports.partials.header', [
+        'total' => $supports->total()
+    ])
+@endsection
 
-<x-pagination 
-    :paginator="$supports"
-    :appends="$filters" />
+@section('content')
+    <a href="{{ route('supports.create') }}">Criar Dúvida</a>
+
+    <table>
+        <thead>
+            <th>assunto</th>
+            <th>status</th>
+            <th>descrição</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {{-- listando suportes --}}
+            @foreach ($supports->items() as $support)
+                <tr>
+                    <td>{{ $support->subject }}</td>
+                    <td>{{ getStatusSupport($support->status) }}</td>
+                    <td>{{ $support->body }}</td>
+                    <td>
+                        {{-- passando parametro id para a rota --}}
+                        <a href="{{ route('supports.show', $support->id) }}">ir</a>
+                        <a href="{{ route('supports.edit', $support->id) }}">editar</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <x-pagination
+        :paginator="$supports"
+        :appends="$filters" />
+@endsection
